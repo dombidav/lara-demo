@@ -1,16 +1,16 @@
 @php
-$type = $type ?? 'text';
+    $type = $type ?? 'text';
 @endphp
 
 <div class="@if($type !== 'file') form-floating @endif {{ $class ?? '' }}">
     @switch($type)
-    @case('select')
-    <input list="{{ \Illuminate\Support\Str::plural($name) }}"
-           class="form-control {{ $inputClass ?? '' }} @error($name) is-invalid @enderror"
-           name="{{ $name }}" id="{{ $id ?? $name }}"
-           value="{{ $value ?? '' }}"
-           @if($required ?? false) required @endif()
-           @if($disabled ?? false) disabled @endif()/>
+        @case('select')
+        <input list="{{ \Illuminate\Support\Str::plural($name) }}"
+               class="form-control {{ $inputClass ?? '' }} @error($name) is-invalid @enderror"
+               name="{{ $name }}" id="{{ $id ?? $name }}"
+               value="{{ $value ?? '' }}"
+               @if($required ?? false) required @endif()
+               @if($disabled ?? false) disabled @endif()/>
 
         <datalist id="{{ \Illuminate\Support\Str::plural($name) }}">
             @foreach($options as $value)
@@ -18,7 +18,7 @@ $type = $type ?? 'text';
             @endforeach
         </datalist>
         @break
-    @case('textarea')
+        @case('textarea')
         <textarea class="form-control {{ $inputClass ?? '' }} @error($name) is-invalid @enderror"
                   name="{{ $name }}" id="{{ $id ?? $name }}"
                   placeholder="{{ $placeholder ?? '' }}"
@@ -26,7 +26,7 @@ $type = $type ?? 'text';
                   @if($disabled ?? false) disabled @endif()>{{ $value ?? '' }}</textarea>
         {{--  Text area does includes any spaces or tabs between tags, so watch out  --}}
         @break
-    @default
+        @default
         <input type="{{ $type }}"
                class="form-control {{ $inputClass ?? '' }} @error($name) is-invalid @enderror"
                name="{{ $name }}" id="{{ $id ?? $name }}"
