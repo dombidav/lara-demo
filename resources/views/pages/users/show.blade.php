@@ -37,6 +37,19 @@
                    <td class="p-3">{{ $role->abilities->implode('title', ', ') }}</td>
                </tr>
            @endforeach
+           <tr>
+               <td>
+                   <x-button.magic class="btn-warning"
+                                   :route="Auth::id() === $user->id ? route('user.profile.edit') : route('users.edit', [$user])">
+                       Edit
+                   </x-button.magic>
+               </td>
+               <td>
+                   <x-button.magic class="btn-danger" :route="route('users.destroy', [$user])"
+                                   confirm="Are you sure? This can not be undone!">Delete
+                   </x-button.magic>
+               </td>
+           </tr>
            </tbody>
        </table>
    </div>
