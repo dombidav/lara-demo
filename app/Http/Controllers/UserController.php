@@ -18,7 +18,7 @@ class UserController extends Controller
 
     public function profile(): Factory|View|Application|RedirectResponse
     {
-        return view('users.show', ['user' => Auth::user()]);
+        return view('pages.users.show', ['user' => Auth::user()]);
     }
 
     public function index(): Factory|View|Application|RedirectResponse
@@ -27,7 +27,7 @@ class UserController extends Controller
             abort(StatusCode::FORBIDDEN);
         }
 
-        return view('users.index', ['users' => User::all()]);
+        return view('pages.users.index', ['users' => User::all()]);
     }
 
     public function create(): Factory|View|Application|RedirectResponse
@@ -36,7 +36,7 @@ class UserController extends Controller
             abort(StatusCode::FORBIDDEN);
         }
 
-        return view('users.form');
+        return view('pages.users.form');
     }
 
     public function store(UserRequest $request): Factory|View|Application|RedirectResponse
@@ -56,7 +56,7 @@ class UserController extends Controller
             abort(StatusCode::FORBIDDEN);
         }
 
-        return view('users.show', ['user' => $user]);
+        return view('pages.users.show', ['user' => $user]);
     }
 
     public function edit(User $user): Factory|View|Application|RedirectResponse
@@ -65,7 +65,7 @@ class UserController extends Controller
             abort(StatusCode::FORBIDDEN);
         }
 
-        return view('users.form', ['user' => $user]);
+        return view('pages.users.form', ['user' => $user]);
     }
 
     public function update(UserRequest $request, User $user): Factory|View|Application|RedirectResponse
