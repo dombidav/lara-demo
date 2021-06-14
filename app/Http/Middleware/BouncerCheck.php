@@ -15,7 +15,7 @@ class BouncerCheck
     {
         $routeName = Str::of(Route::getCurrentRoute()->getName() ?? '');
         if ($routeName->isNotEmpty() && $routeName->contains('.')) {
-            $model = "App\\Models\\{$routeName->before('.')->title()->remove(' ')}";
+            $model = "App\\Models\\{$routeName->before('.')->title()->remove(' ')->singular()}";
             $function = $routeName->after('.')->title()->remove(' ');
 
             if (!Auth::check() || Auth::user()?->cannot($function, $model)) abort(StatusCode::FORBIDDEN);
